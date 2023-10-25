@@ -1,15 +1,24 @@
 
-<mat-drawer-container class="app-container" autosize>
-    <mat-drawer #drawer class="app-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-    </mat-drawer>
-  
-    <div class="app-sidenav-content">
-        <app-toolbar></app-toolbar>
+<mat-drawer-container class="app-drawer-container">
+  <mat-drawer #drawer class="app-drawer"
+                [opened]="!isScreenSmall"
+                [mode]="isScreenSmall ? 'over' : 'side'">
+    <mat-toolbar color="primary">
+      Contacts
+    </mat-toolbar>
+    <mat-list>
+      <mat-list-item>1</mat-list-item>
+      <mat-list-item>2</mat-list-item>
+      <mat-list-item>3</mat-list-item>
+      <mat-list-item>4</mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <div class="app-drawer-content">
+      <app-toolbar (toggleDrawer)="drawer.toggle()"></app-toolbar>
+      <div class="wrapper">
         <router-outlet></router-outlet>
-      <button type="button" mat-button (click)="drawer.toggle()">
-        Toggle sidenav
-      </button>
-    </div>
+      </div>
+  </div>
   
   </mat-drawer-container>
