@@ -8,6 +8,7 @@ import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { UserService } from './services/user.service';
 
 
 const routes: Routes = [
@@ -32,6 +33,9 @@ const routes: Routes = [
     FlexLayoutModule,
     FormsModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    UserService
   ]
 })
 export class ContactmanagerModule { }
