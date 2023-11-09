@@ -6,12 +6,13 @@
     <mat-toolbar color="primary">
       Contacts
     </mat-toolbar>
-    <mat-list>
-      <mat-list-item>1</mat-list-item>
-      <mat-list-item>2</mat-list-item>
-      <mat-list-item>3</mat-list-item>
-      <mat-list-item>4</mat-list-item>
-    </mat-list>
+    
+    <mat-nav-list>
+      <mat-list-item *ngFor="let user of users | async">
+        <a matLine [routerLink]="['/contactmanager', user.id]">{{ user.name }}</a>
+      </mat-list-item>
+    </mat-nav-list>
+
   </mat-drawer>
 
   <div class="app-drawer-content">
