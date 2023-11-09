@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
+import { Router } from '@angular/router';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -19,7 +20,8 @@ export class SidenavComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private userService: UserService) { }
+    private userService: UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.breakpointObserver
@@ -32,7 +34,7 @@ export class SidenavComponent {
     this.userService.loadAll();
 
     this.users.subscribe(data => {
-      console.log(data);
+      if (data.length > 0) this.router.navigate(['/contactmanager', data[0].id]);
     });
   }
 }
